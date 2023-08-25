@@ -1,0 +1,13 @@
+---
+title: "Cryptocurrency Price Analytics using AI"
+author: "mtnvdsk"
+image: "thumbnail.jpg"
+date: "2023-08-22"
+---
+Designed and implemented an artificial neural network (ANN) model using
+TensorFlow to predict future cryptocurrency prices based on historical price data.
+Built a long short-term memory (LSTM) model to improve prediction accuracy by
+considering the temporal nature of cryptocurrency price movements.
+Built an offline Django website that provides users with a user-friendly interface to access and visualize the predictions made by the ANN and LSTM model.
+
+[Github link](https://github.com/mtnvdsk/cryptobitcoin)

@@ -1,0 +1,36 @@
+project:
+  type: website
+
+website:
+  title: "mtnvdsk"
+  favicon: 'profile.jpg'
+  navbar:
+    left:
+      - text: Home
+        href: mtnvdsk.qmd
+      - text: projects
+        href: projects.qmd
+      - text: resume
+        href: resume.qmd
+    right:
+      - icon: github
+        href: https://github.com/mtnvdsk
+      - icon: twitter
+        href: https://twitter.com/mtnvdsk
+  page-footer:
+    center: |
+      [Contact mtnvdsk](mailto:mtnvdsk@gmail.com)
+    right: |
+      [Github Code Repo](https://github.com/mtnvdsk)
+    background: "#2780e3"
+format:
+  html:
+    theme:
+      light: [cosmo, theme_light_custom.scss]
+      dark: [darkly, theme_dark_custom.scss]
+    css: styles.css
+    code-link: true
+    highlight-style: github
+
+editor: visual
+
