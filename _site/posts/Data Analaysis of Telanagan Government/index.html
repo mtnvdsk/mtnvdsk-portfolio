@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="mtnvdsk">
+<meta name="dcterms.date" content="2023-09-28">
+
+<title>mtnvdsk - Data Analysis for Telegana Government</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../profile.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">mtnvdsk</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../mtnvdsk.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html" rel="" target="">
+ <span class="menu-text">projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resume.html" rel="" target="">
+ <span class="menu-text">resume</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mtnvdsk" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/mtnvdsk" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Analysis for Telegana Government</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>mtnvdsk </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 28, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Objectives:</p>
+<p>• Explore Stamp Registration, Transportation and Ts-Ipass Datasets. Understand their attributes, categories and time period.</p>
+<p>• Analyze trends and patterns within each department.</p>
+<p>• Identify growth opportunities and areas needing attention.</p>
+<p>• Find correlation among these departments and report the overall growth of the state through insights and relevant visuals such as shape maps.</p>
+<p>Primary Questions:</p>
+<p><strong>Stamp Registration</strong></p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fact_stamps.shape()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(1504, 6)</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fact_stamps.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>dist_code month</th>
+<th>documents_registered_cnt</th>
+<th>documents_registered_rev</th>
+<th>estamps_challans_cnt</th>
+<th>estamps_challans_rev</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>14_1</td>
+<td>2019-04-01</td>
+<td>4533</td>
+<td>59236363</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>17_3</td>
+<td>2019-04-01</td>
+<td>4151</td>
+<td>41508762</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>20_3</td>
+<td>2019-04-01</td>
+<td>2116</td>
+<td>23674170</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>21_5</td>
+<td>2019-04-01</td>
+<td>1089</td>
+<td>15915285</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>23_1</td>
+<td>2019-04-01</td>
+<td>6133</td>
+<td>82593256</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#m=fact_stamps.merge(dim_districts,on="dist_code",how="left")</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#m.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 21%">
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 18%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>dist_code</th>
+<th>month</th>
+<th>documents_registered_cnt</th>
+<th>documents_registered_rev</th>
+<th>estamps_challans_cnt</th>
+<th>estamps_challans_rev</th>
+<th>district</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>14_1</td>
+<td>2019-04-01</td>
+<td>4533</td>
+<td>59236363</td>
+<td>0</td>
+<td>0</td>
+<td>Mahabubnagar</td>
+</tr>
+<tr class="even">
+<td>17_3</td>
+<td>2019-04-01</td>
+<td>4151</td>
+<td>41508762</td>
+<td>0</td>
+<td>0</td>
+<td>Siddipet</td>
+</tr>
+<tr class="odd">
+<td>20_3</td>
+<td>2019-04-01</td>
+<td>2116</td>
+<td>23674170</td>
+<td>0</td>
+<td>0</td>
+<td>Rajanna Sircilla</td>
+</tr>
+<tr class="even">
+<td>21_5</td>
+<td>2019-04-01</td>
+<td>1089</td>
+<td>15915285</td>
+<td>0</td>
+<td>0</td>
+<td>Mahabubabad</td>
+</tr>
+<tr class="odd">
+<td>23_1</td>
+<td>2019-04-01</td>
+<td>6133</td>
+<td>82593256</td>
+<td>0</td>
+<td>0</td>
+<td>Nalgonda</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#m["year"]=pd.DatetimeIndex(m.month).year</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#m["total_revenue"]=m["documents_registered_rev"]+m["estamps_challans_rev"]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#m.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 18%">
+<col style="width: 17%">
+<col style="width: 14%">
+<col style="width: 15%">
+<col style="width: 6%">
+<col style="width: 3%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>dist_code</th>
+<th>month</th>
+<th>documents_registered_cnt</th>
+<th>documents_registered_rev</th>
+<th>estamps_challans_cnt</th>
+<th>estamps_challans_rev</th>
+<th>district</th>
+<th>year</th>
+<th>total_revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>14_1</td>
+<td>2019-04-01</td>
+<td>4533</td>
+<td>59236363</td>
+<td>0</td>
+<td>0</td>
+<td>Mahabubnagar</td>
+<td>2019</td>
+<td>59236363</td>
+</tr>
+<tr class="even">
+<td>17_3</td>
+<td>2019-04-01</td>
+<td>4151</td>
+<td>41508762</td>
+<td>0</td>
+<td>0</td>
+<td>Siddipet</td>
+<td>2019</td>
+<td>41508762</td>
+</tr>
+<tr class="odd">
+<td>20_3</td>
+<td>2019-04-01</td>
+<td>2116</td>
+<td>23674170</td>
+<td>0</td>
+<td>0</td>
+<td>Rajanna Sircilla</td>
+<td>2019</td>
+<td>23674170</td>
+</tr>
+<tr class="even">
+<td>21_5</td>
+<td>2019-04-01</td>
+<td>1089</td>
+<td>15915285</td>
+<td>0</td>
+<td>0</td>
+<td>Mahabubabad</td>
+<td>2019</td>
+<td>15915285</td>
+</tr>
+<tr class="odd">
+<td>23_1</td>
+<td>2019-04-01</td>
+<td>6133</td>
+<td>82593256</td>
+<td>0</td>
+<td>0</td>
+<td>Nalgonda</td>
+<td>2019</td>
+<td>82593256</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filtered_data = m[(m['year'] &gt;= 2019) &amp; (m['year'] &lt;= 2022)]</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by district and calculate the total revenue for each district in 2019 and 2022</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#district_revenue_2019 = filtered_data[filtered_data['year'] == 2019].groupby('district')['total_revenue'].sum()</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#district_revenue_2022 = filtered_data[filtered_data['year'] == 2022].groupby('district')['total_revenue'].sum()</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the revenue growth for each district</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#revenue_growth = (district_revenue_2022 - district_revenue_2019) / district_revenue_2019</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort districts by revenue growth in descending order and get the top 5</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#top_5_districts = revenue_growth.sort_values(ascending=False).head(5)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the top 5 districts with the highest revenue growth</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#print(top_5_districts)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>district</p>
+<p>Mulugu 6.285740</p>
+<p>Adilabad 4.895097</p>
+<p>Bhadradri Kothagudem 4.330842</p>
+<p>Mancherial 4.327274</p>
+<p>Karimnagar 4.079940</p>
+<p>Name: total_revenue, dtype: float64</p>
+<p><strong>1. How does the revenue generated from document registration vary across districts in Telangana? List down the top 5 districts that showed the highest document registration revenue growth between FY 2019 and 2022.</strong></p>
+<p><strong>Top 5 districts with registration revenue are</strong></p>
+<p><strong>1.Mulugu</strong></p>
+<p><strong>2.Adilabad</strong></p>
+<p><strong>3.Bhadradri Kothagudem</strong></p>
+<p><strong>4.Mancherial</strong></p>
+<p><strong>5.Karimnagar</strong></p>
+<p><img src="Q1 -1.png" class="img-fluid"></p>
+<p><img src="Q1 -2.png" class="img-fluid"></p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fy22=m[(m["year"]==2022)]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#a=fy22.groupby(['year','district'])['estamps_challans_rev'].sum().reset_index()</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#b=fy22.groupby(['year','district'])['documents_registered_rev'].sum().reset_index()</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#fy22=pd.DataFrame({</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#    "districts": a["district"],</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#    "estamps_challans_rev": a.estamps_challans_rev,</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#    "documents_registered_rev": b.documents_registered_rev,</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#    "year":a.year</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#})</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#fy22[(fy22.estamps_challans_rev&gt;fy22.documents_registered_rev)].sort_values(by="estamps_challans_rev",ascending=False).head(5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>districts</th>
+<th>estamps_challans_rev</th>
+<th>documents_registered_rev</th>
+<th>year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>24</td>
+<td>Rangareddy</td>
+<td>39955444951</td>
+<td>39465527338</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>Medchal_Malkajgiri</td>
+<td>24394118384</td>
+<td>24264692242</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Hyderabad</td>
+<td>13959081475</td>
+<td>13860437338</td>
+</tr>
+<tr class="even">
+<td>25</td>
+<td>Sangareddy</td>
+<td>8371737803</td>
+<td>8279206192</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Hanumakonda</td>
+<td>2911182033</td>
+<td>2891014228</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2.How does the revenue generated from document registration compare to the revenue generated from e-stamp challans across districts? List down the top 5 districts where e-stamps revenue contributes significantly more to the revenue than the documents in FY 2022?</strong> <strong>These are the districts where the estamps revenue contributes more compared to document registration revenue</strong></p>
+<p><strong>1.Rangareddy</strong></p>
+<p><strong>2.Medchal_Malkajgiri</strong></p>
+<p><strong>3.Hyderabad</strong></p>
+<p><strong>4.Sangareddy</strong></p>
+<p><strong>5.Hanumankonda</strong></p>
+<p><img src="Q2.png" class="img-fluid"></p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#a=m.groupby(['year','district'])['estamps_challans_cnt'].sum().reset_index()</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#b=m.groupby(['year','district'])['documents_registered_cnt'].sum().reset_index()</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#b.documents_registered_cnt</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#fy=pd.DataFrame({</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#    "districts": a["district"],</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#    "estamps_challans_cnt": a.estamps_challans_cnt,</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#    "documents_registered_cnt": b.documents_registered_cnt,</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#    "year":a.year</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#})</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fy["percentage"] = ((fy["documents_registered_cnt"] - fy["estamps_challans_cnt"]) / #fy["estamps_challans_cnt"]) * 100</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify years with significant changes</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#significant_changes = fy[fy["percentage"].abs() &gt; 10]</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Years with significant changes:")</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#significant_changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Years with significant changes:</p>
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 29%">
+<col style="width: 34%">
+<col style="width: 6%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>districts</th>
+<th>estamps_challans_cnt</th>
+<th>documents_registered_cnt</th>
+<th>year</th>
+<th>percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Adilabad</td>
+<td>0</td>
+<td>9024</td>
+<td>2019</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>Bhadradri Kothagudem</td>
+<td>0</td>
+<td>5960</td>
+<td>2019</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td>Hanumakonda</td>
+<td>0</td>
+<td>45134</td>
+<td>2019</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>Hyderabad</td>
+<td>0</td>
+<td>46667</td>
+<td>2019</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td>Jagtial</td>
+<td>0</td>
+<td>21889</td>
+<td>2019</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>Warangal</td>
+<td>280</td>
+<td>9142</td>
+<td>2020</td>
+<td>3165.000000</td>
+</tr>
+<tr class="even">
+<td>Yadadri</td>
+<td>Bhuvanagiri</td>
+<td>2487</td>
+<td>43397</td>
+<td>2020</td>
+</tr>
+<tr class="odd">
+<td>Adilabad</td>
+<td>14848</td>
+<td>12807</td>
+<td>2021</td>
+<td>-13.745959</td>
+</tr>
+<tr class="even">
+<td>Bhadradri</td>
+<td>Kothagudem</td>
+<td>2636</td>
+<td>2275</td>
+<td>2023</td>
+</tr>
+<tr class="odd">
+<td>Siddipet</td>
+<td>11600</td>
+<td>12957</td>
+<td>2023</td>
+<td>11.698276</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.Is there any alteration of e-Stamp challan count and document registration count pattern since the implementation of e-Stamp challan? If so, what suggestions would you propose to the government?</strong> <strong>The implementation of the estamp resulting in the massive increase and need to improve its services like adding more documents to it to ease the process of registration</strong></p>
+<p><img src="Q3.png" class="img-fluid"></p>
+<p><strong>4.Categorize districts into three segments based on their stamp registration revenue generation during the fiscal year 2021 to 2022.</strong></p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fy20_21=m[(m["year"]!=2019) &amp; (m["year"]!=2020)]</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#district_total_revenue = fy20_21.groupby("district")["total_revenue"].sum()</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#low = district_total_revenue.quantile(0.33)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#high = district_total_revenue.quantile(0.66)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#district_total_revenue.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>district</p>
+<p>Adilabad 1623944329</p>
+<p>Bhadradri Kothagudem 1197512200</p>
+<p>Hanumakonda 11198412335</p>
+<p>Hyderabad 55765536121</p>
+<p>Jagtial 2376689031</p>
+<p>Name: total_revenue, dtype: int64</p>
+<p><img src="Q4.png" class="img-fluid"></p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#district_total_revenue_categories=pd.cut(district_total_revenue,bins=[0, low, high, float('inf')],labels=['Low', 'Medium', 'High'])</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#districts_categorized = pd.DataFrame({</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    "District": district_total_revenue.index,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#    "Total_Revenue": district_total_revenue.values,</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#    "Revenue_Category": district_total_revenue_categories</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#})</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#districts_categorized.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>District</th>
+<th>Total_Revenue</th>
+<th>Revenue_Category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>district</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Adilabad</td>
+<td>Adilabad</td>
+<td>1623944329</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td>Bhadradri Kothagudem</td>
+<td>Bhadradri Kothagudem</td>
+<td>1197512200</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td>Hanumakonda</td>
+<td>Hanumakonda</td>
+<td>11198412335</td>
+<td>High</td>
+</tr>
+<tr class="odd">
+<td>Hyderabad</td>
+<td>Hyderabad</td>
+<td>55765536121</td>
+<td>High</td>
+</tr>
+<tr class="even">
+<td>Jagtial</td>
+<td>Jagtial</td>
+<td>2376689031</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Transport data analysis</strong></p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fact_transport.info()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&lt;class ‘pandas.core.frame.DataFrame’&gt;</p>
+<p>RangeIndex: 1440 entries, 0 to 1439</p>
+<p>Data columns (total 18 columns):</p>
+<p># Column Non-Null Count Dtype</p>
+<hr>
+<p>0 dist_code 1440 non-null object</p>
+<p>1 month 1440 non-null object</p>
+<p>2 fuel_type_petrol 1440 non-null int64</p>
+<p>3 fuel_type_diesel 1440 non-null int64</p>
+<p>4 fuel_type_electric 1440 non-null int64</p>
+<p>5 fuel_type_others 1440 non-null int64</p>
+<p>6 vehicleClass_MotorCycle 1440 non-null int64</p>
+<p>7 vehicleClass_MotorCar 1440 non-null int64</p>
+<p>8 vehicleClass_AutoRickshaw 1440 non-null int64</p>
+<p>9 vehicleClass_Agriculture 1440 non-null int64</p>
+<p>10 vehicleClass_others 1440 non-null int64</p>
+<p>11 seatCapacity_1_to_3 1440 non-null int64</p>
+<p>12 seatCapacity_4_to_6 1440 non-null int64</p>
+<p>13 seatCapacity_above_6 1440 non-null int64</p>
+<p>14 Brand_new_vehicles 1440 non-null int64</p>
+<p>15 Pre-owned_vehicles 1440 non-null int64</p>
+<p>16 category_Non-Transport 1440 non-null int64</p>
+<p>17 category_Transport 1440 non-null int64</p>
+<p>dtypes: int64(16), object(2)</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fact_transport.shape</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(1440, 18)</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#m=fact_transport.merge(dim_districts,on="dist_code",how="left")</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#m["year"]=pd.DatetimeIndex(m.month).year</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#m.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 2%">
+<col style="width: 1%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>dist_code</th>
+<th>month</th>
+<th>fuel_type_petrol</th>
+<th>fuel_type_diesel</th>
+<th>fuel_type_electric</th>
+<th>fuel_type_others</th>
+<th>vehicleClass_MotorCycle</th>
+<th>vehicleClass_MotorCar</th>
+<th>vehicleClass_AutoRickshaw</th>
+<th>vehicleClass_Agriculture</th>
+<th>vehicleClass_others</th>
+<th>seatCapacity_1_to_3</th>
+<th>seatCapacity_4_to_6</th>
+<th>seatCapacity_above_6</th>
+<th>Brand_new_vehicles</th>
+<th>Pre-owned_vehicles</th>
+<th>category_Non-Transport</th>
+<th>category_Transport</th>
+<th>district</th>
+<th>year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>15_1</td>
+<td>2019-04-01</td>
+<td>17910</td>
+<td>3011</td>
+<td>76</td>
+<td>22</td>
+<td>15308</td>
+<td>4429</td>
+<td>0</td>
+<td>4</td>
+<td>1278</td>
+<td>16110</td>
+<td>4182</td>
+<td>717</td>
+<td>19542</td>
+<td>1477</td>
+<td>19856</td>
+<td>1163</td>
+<td>Rangareddy</td>
+<td>2019</td>
+</tr>
+<tr class="even">
+<td>18_2</td>
+<td>2019-04-01</td>
+<td>3066</td>
+<td>306</td>
+<td>6</td>
+<td>0</td>
+<td>2995</td>
+<td>142</td>
+<td>49</td>
+<td>64</td>
+<td>128</td>
+<td>3156</td>
+<td>189</td>
+<td>33</td>
+<td>3322</td>
+<td>56</td>
+<td>3203</td>
+<td>175</td>
+<td>Kamareddy</td>
+<td>2019</td>
+</tr>
+<tr class="odd">
+<td>20_3</td>
+<td>2019-04-01</td>
+<td>1577</td>
+<td>215</td>
+<td>0</td>
+<td>0</td>
+<td>1546</td>
+<td>79</td>
+<td>29</td>
+<td>21</td>
+<td>117</td>
+<td>1683</td>
+<td>104</td>
+<td>5</td>
+<td>1751</td>
+<td>41</td>
+<td>1648</td>
+<td>144</td>
+<td>Rajanna Sircilla</td>
+<td>2019</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#m.corr()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>5.Investigate whether there is any correlation between vehicle sales and specific months or seasons in different districts. Are there any months or seasons that consistently show higher or lower sales rate, and if yes, what could be the driving factors? (Consider Fuel-Type category only)</strong></p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#columns_to_analyze = ['month', 'district', 'fuel_type_petrol', 'fuel_type_diesel', 'fuel_type_electric', 'fuel_type_others']</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#data = m[columns_to_analyze].copy()</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#correlation_matrix = data.corr()</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#print(correlation_matrix)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>                fuel_type_petrol  fuel_type_diesel  fuel_type_electric  \</code></pre>
+<p>fuel_type_petrol 1.000000 0.892273 0.598413<br>
+fuel_type_diesel 0.892273 1.000000 0.471648<br>
+fuel_type_electric 0.598413 0.471648 1.000000<br>
+fuel_type_others 0.633747 0.495163 0.530573</p>
+<pre><code>                fuel_type_others  </code></pre>
+<p>fuel_type_petrol 0.633747<br>
+fuel_type_diesel 0.495163<br>
+fuel_type_electric 0.530573<br>
+fuel_type_others 1.000000</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(10, 8))</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f")</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.title("Correlation Matrix")</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="corr.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">correlation</figcaption>
+</figure>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by month and calculate the mean sales for each fuel type</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#monthly_sales = data.groupby('month')[['fuel_type_petrol', 'fuel_type_diesel', 'fuel_type_electric', 'fuel_type_others']].mean()</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#monthly_sales.plot(kind='bar', figsize=(50, 6))</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.title("Average Vehicle Sales by Month")</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.xlabel("Month")</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.ylabel("Average Sales")</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.xticks(rotation=45)</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.legend(title='Fuel Type')</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="sales.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sales of vehicles</figcaption>
+</figure>
+</div>
+<p><strong>Driving Factors for slow growth in sales in some months</strong> <strong>Vehicle registrations in Telangana for the year 2020-04-01 reduced drastically due to the COVID-19 pandemic. The lockdown imposed by the government in March 2020 restricted the movement of people and vehicles, which led to a decline in the demand for new vehicles. Additionally, the economic slowdown caused by the pandemic also led to people postponing their plans to buy new vehicles.</strong></p>
+<p><strong>According to the Telangana Transport Department, the number of vehicle registrations in the state fell by 56% in April 2020 compared to the same month in the previous year. The decline was even more pronounced in the following months, with registrations falling by 72% in May 2020 and 80% in June 2020.</strong></p>
+<p><strong>Here are some other factors that may have contributed to the decline in vehicle registrations in Telangana in 2020:</strong></p>
+<p><strong>The increase in the prices of vehicles due to the rise in the cost of raw materials. The shortage of semiconductors, which is a key component in many vehicles. The uncertainty about the future of the economy, which made people hesitant to make major purchases such as a new vehicle.</strong></p>
+<p><strong>There are a few possible reasons why vehicle registrations in Telangana drastically reduced in May 2021.</strong></p>
+<p><strong>The COVID-19 pandemic was at its peak in India during this time, and many people were staying home to avoid getting sick. This would have led to a decrease in the demand for new vehicles. The Telangana government increased the registration fees for vehicles in April 2021. This would have made it more expensive to buy a new vehicle, which could have also contributed to the decline in registrations. The Indian economy was also struggling during this time, which could have made it difficult for people to afford to buy a new vehicle. It is also possible that there is another factor that caused the decline in vehicle registrations in Telangana in May 2021. However, the reasons mentioned above are the most likely explanations.</strong></p>
+<p><strong>Here are some additional details about each of the reasons mentioned above:</strong></p>
+<p><strong>The COVID-19 pandemic caused a nationwide lockdown in India in March 2020. The lockdown was gradually lifted in the following months, but many people were still hesitant to go out and about in public. This would have led to a decrease in the demand for transportation, including new vehicles. The Telangana government increased the registration fees for vehicles in April 2021. The increase was as follows: Three-wheelers: from Rs. 600 to Rs. 2,500 Light motor vehicles: from Rs. 600 to Rs. 5,000 Medium goods vehicles: from Rs. 1,000 to Rs. 1,500 Heavy goods vehicles: from Rs. 1,500 to Rs. 2,000 This increase in registration fees would have made it more expensive to buy a new vehicle, which could have contributed to the decline in registrations.</strong></p>
+<p><strong>The Indian economy was also struggling during this time due to the COVID-19 pandemic. The unemployment rate rose, and many businesses were forced to close. This would have made it difficult for people to afford to buy a new vehicle.</strong></p>
+<p><strong>How does the distribution of vehicles vary by vehicle class (MotorCycle, MotorCar, AutoRickshaw, Agriculture) across different districts? Are there any districts with a predominant preference for a specific vehicle class? Consider FY 2022 for analysis.</strong></p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#data_fy_2022 = m[m['year'] == 2022][['district', 'vehicleClass_MotorCycle', 'vehicleClass_MotorCar', 'vehicleClass_AutoRickshaw', 'vehicleClass_Agriculture']]</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by district and calculate the mean distribution for each vehicle class</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#district_vehicle_distribution = data_fy_2022.groupby('district').mean()</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(12, 8))</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.heatmap(district_vehicle_distribution, cmap="Blues", annot=True, fmt=".2f")</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.title("Vehicle Class Distribution by District (FY 2022)")</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.xlabel("Vehicle Class")</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.ylabel("District")</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="vehicle.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Vehicle class distribution</figcaption>
+</figure>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the predominant vehicle class for each district</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#predominant_vehicle_class = district_vehicle_distribution.idxmax(axis=1)</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#predominant_vehicle_class</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>district</p>
+<p>Adilabad vehicleClass_MotorCycle</p>
+<p>Bhadradri Kothagudem vehicleClass_MotorCycle</p>
+<p>Hyderabad vehicleClass_MotorCycle</p>
+<p>Jagtial vehicleClass_MotorCycle</p>
+<p>Jangoan vehicleClass_MotorCycle</p>
+<p>Jayashankar Bhupalpally vehicleClass_MotorCycle</p>
+<p>Jogulamba Gadwal vehicleClass_MotorCycle</p>
+<p>Kamareddy vehicleClass_MotorCycle</p>
+<p>Karimnagar vehicleClass_MotorCycle</p>
+<p>Khammam vehicleClass_MotorCycle</p>
+<p>Kumurambheem Asifabad vehicleClass_MotorCycle</p>
+<p>Mahabubabad vehicleClass_MotorCycle</p>
+<p>Mahabubnagar vehicleClass_MotorCycle</p>
+<p>Mancherial vehicleClass_MotorCycle</p>
+<p>Medak vehicleClass_MotorCycle</p>
+<p>Medchal_Malkajgiri vehicleClass_MotorCycle</p>
+<p>Nagarkurnool vehicleClass_MotorCycle</p>
+<p>Nalgonda vehicleClass_MotorCycle</p>
+<p>Nirmal vehicleClass_MotorCycle</p>
+<p>Nizamabad vehicleClass_MotorCycle</p>
+<p>Peddapalli vehicleClass_MotorCycle</p>
+<p>Rajanna Sircilla vehicleClass_MotorCycle</p>
+<p>Rangareddy vehicleClass_MotorCycle</p>
+<p>Sangareddy vehicleClass_MotorCycle</p>
+<p>Siddipet vehicleClass_MotorCycle</p>
+<p>Suryapet vehicleClass_MotorCycle</p>
+<p>Vikarabad vehicleClass_MotorCycle</p>
+<p>Wanaparthy vehicleClass_MotorCycle</p>
+<p>Warangal vehicleClass_MotorCycle</p>
+<p>Yadadri Bhuvanagiri vehicleClass_MotorCycle</p>
+<p><strong>7.List down the top 3 and bottom 3 districts that have shown the highest and lowest vehicle sales growth during FY 2022 compared to FY 2021? (Consider and compare categories: Petrol, Diesel and Electric)</strong></p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df=m</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate vehicle sales for each district and fuel type in FY 2021 and FY 2022</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#df['sales_petrol_fy2021'] = df['fuel_type_petrol'] * df['year'].apply(lambda x: 1 if x == 2021 else 0)</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#df['sales_petrol_fy2022'] = df['fuel_type_petrol'] * df['year'].apply(lambda x: 1 if x == 2022 else 0)</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co">#df['sales_diesel_fy2021'] = df['fuel_type_diesel'] * df['year'].apply(lambda x: 1 if x == 2021 else 0)</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#df['sales_diesel_fy2022'] = df['fuel_type_diesel'] * df['year'].apply(lambda x: 1 if x == 2022 else 0)</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">#df['sales_electric_fy2021'] = df['fuel_type_electric'] * df['year'].apply(lambda x: 1 if x == 2021 else 0)</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">#df['sales_electric_fy2022'] = df['fuel_type_electric'] * df['year'].apply(lambda x: 1 if x == 2022 else 0)</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by district and calculate total sales for each fuel type and year</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">#grouped = df.groupby('district').agg(</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co">#    sales_petrol_fy2021=('sales_petrol_fy2021', 'sum'),</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co">#    sales_petrol_fy2022=('sales_petrol_fy2022', 'sum'),</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co">#    sales_diesel_fy2021=('sales_diesel_fy2021', 'sum'),</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co">#    sales_diesel_fy2022=('sales_diesel_fy2022', 'sum'),</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co">#    sales_electric_fy2021=('sales_electric_fy2021', 'sum'),</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="co">#    sales_electric_fy2022=('sales_electric_fy2022', 'sum')</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="co">#)</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate growth rate for each fuel type</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="co">#grouped['growth_petrol'] = (grouped['sales_petrol_fy2022'] - grouped['sales_petrol_fy2021']) / grouped['sales_petrol_fy2021']</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="co">#grouped['growth_diesel'] = (grouped['sales_diesel_fy2022'] - grouped['sales_diesel_fy2021']) / grouped['sales_diesel_fy2021']</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="co">#grouped['growth_electric'] = (grouped['sales_electric_fy2022'] - grouped['sales_electric_fy2021']) / grouped['sales_electric_fy2021']</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="co">#grouped.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>sales_petrol_fy2021</th>
+<th>sales_petrol_fy2022</th>
+<th>sales_diesel_fy2021</th>
+<th>sales_diesel_fy2022</th>
+<th>sales_electric_fy2021</th>
+<th>sales_electric_fy2022</th>
+<th>growth_petrol</th>
+<th>growth_diesel</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>district</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Adilabad</td>
+<td>17888</td>
+<td>12612</td>
+<td>2280</td>
+<td>2539</td>
+<td>171</td>
+<td>341</td>
+<td>-0.294946</td>
+<td>0.113596</td>
+</tr>
+<tr class="odd">
+<td>Bhadradri</td>
+<td>Kothagudem</td>
+<td>30750</td>
+<td>21190</td>
+<td>6330</td>
+<td>5569</td>
+<td>30</td>
+<td>238</td>
+<td>-0.310894</td>
+</tr>
+<tr class="even">
+<td>Hyderabad</td>
+<td>238164</td>
+<td>234151</td>
+<td>20783</td>
+<td>21605</td>
+<td>5911</td>
+<td>18276</td>
+<td>-0.016850</td>
+<td>0.039552</td>
+</tr>
+<tr class="odd">
+<td>Jagtial</td>
+<td>28259</td>
+<td>16369</td>
+<td>3610</td>
+<td>2264</td>
+<td>251</td>
+<td>593</td>
+<td>-0.420751</td>
+<td>-0.372853</td>
+</tr>
+<tr class="even">
+<td>Jangoan</td>
+<td>14714</td>
+<td>10420</td>
+<td>3726</td>
+<td>2473</td>
+<td>40</td>
+<td>168</td>
+<td>-0.291831</td>
+<td>-0.336286</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top 3 and bottom 3 districts for each fuel type based on growth rate</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#top_petrol = grouped.sort_values('growth_petrol', ascending=False).head(3)</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#bottom_petrol = grouped.sort_values('growth_petrol').head(3)</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#top_diesel = grouped.sort_values('growth_diesel', ascending=False).head(3)</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#bottom_diesel = grouped.sort_values('growth_diesel').head(3)</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#top_electric = grouped.sort_values('growth_electric', ascending=False).head(3)</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#bottom_electric = grouped.sort_values('growth_electric').head(3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Top 3 districts with highest petrol sales growth:")</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#print(top_petrol[['growth_petrol']])</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">#print("\nBottom 3 districts with lowest petrol sales growth:")</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">#print(bottom_petrol[['growth_petrol']])</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">#print("\nTop 3 districts with highest diesel sales growth:")</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">#print(top_diesel[['growth_diesel']])</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co">#print("\nBottom 3 districts with lowest diesel sales growth:")</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co">#print(bottom_diesel[['growth_diesel']])</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#print("\nTop 3 districts with highest electric sales growth:")</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co">#print(top_electric[['growth_electric']])</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co">#print("\nBottom 3 districts with lowest electric sales growth:")</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co">#print(bottom_electric[['growth_electric']])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Top 3 districts with highest petrol sales growth:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>growth_petrol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>district</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Rangareddy</td>
+<td>0.061650</td>
+</tr>
+<tr class="odd">
+<td>Hyderabad</td>
+<td>-0.016850</td>
+</tr>
+<tr class="even">
+<td>Medchal_Malkajgiri</td>
+<td>-0.044339</td>
+</tr>
+</tbody>
+</table>
+<p>Bottom 3 districts with lowest petrol sales growth:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>growth_petrol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>district</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Warangal</td>
+<td>-0.547441</td>
+</tr>
+<tr class="odd">
+<td>Jagtial</td>
+<td>-0.420751</td>
+</tr>
+<tr class="even">
+<td>Jayashankar Bhupalpally</td>
+<td>-0.391166</td>
+</tr>
+</tbody>
+</table>
+<p>Top 3 districts with highest diesel sales growth:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>growth_diesel</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>district</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Karimnagar</td>
+<td>1.101447</td>
+</tr>
+<tr class="odd">
+<td>Rangareddy</td>
+<td>0.207711</td>
+</tr>
+<tr class="even">
+<td>Sangareddy</td>
+<td>0.137153</td>
+</tr>
+</tbody>
+</table>
+<p>Bottom 3 districts with lowest diesel sales growth:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>growth_diesel</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>district</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Warangal</td>
+<td>-0.612469</td>
+</tr>
+<tr class="odd">
+<td>Jagtial</td>
+<td>-0.372853</td>
+</tr>
+<tr class="even">
+<td>Mahabubabad</td>
+<td>-0.350363</td>
+</tr>
+</tbody>
+</table>
+<p>Top 3 districts with highest electric sales growth:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>growth_electric</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>district</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Bhadradri Kothagudem</td>
+<td>6.933333</td>
+</tr>
+<tr class="odd">
+<td>Khammam</td>
+<td>6.070423</td>
+</tr>
+<tr class="even">
+<td>Mahabubabad</td>
+<td>4.857143</td>
+</tr>
+</tbody>
+</table>
+<p>Bottom 3 districts with lowest electric sales growth:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>growth_electric</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>district</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Rajanna Sircilla</td>
+<td>0.193252</td>
+</tr>
+<tr class="odd">
+<td>Mahabubnagar</td>
+<td>0.211765</td>
+</tr>
+<tr class="even">
+<td>Wanaparthy</td>
+<td>0.697917</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ts-Ipass Data Analysis</strong></p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#from pandas.core.indexes.period import DatetimeIndex</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#m=fact_TS_ipass.merge(dim_districts,on="dist_code",how="left")</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#m["year"]=DatetimeIndex(m.month).year</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#m.info()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&lt;class ‘pandas.core.frame.DataFrame’&gt;</p>
+<p>Int64Index: 5753 entries, 0 to 5752</p>
+<p>Data columns (total 7 columns):</p>
+<p># Column Non-Null Count Dtype</p>
+<hr>
+<p>0 dist_code 5753 non-null object</p>
+<p>1 month 5753 non-null object</p>
+<p>2 sector 5753 non-null object</p>
+<p>3 investment in cr 5753 non-null float64</p>
+<p>4 number_of_employees 5753 non-null int64</p>
+<p>5 district 5753 non-null object</p>
+<p>6 year 5753 non-null int64</p>
+<p>dtypes: float64(1), int64(2), object(4)</p>
+<p><strong>8.List down the top 5 sectors that have witnessed the most significant investments in FY 2022.</strong></p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fy22=m[(m["year"]==2022)]</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#a=fy22.groupby(['sector'])['investment in cr'].sum().reset_index()</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#a.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>sector</th>
+<th>investment in cr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Agro based incl Cold Storages</td>
+<td>1033.2048</td>
+</tr>
+<tr class="even">
+<td>Automobile</td>
+<td>305.8881</td>
+</tr>
+<tr class="odd">
+<td>Beverages</td>
+<td>1848.1920</td>
+</tr>
+<tr class="even">
+<td>Cement, Cement &amp; Concrete Products, Fly Ash Br…</td>
+<td>1066.1876</td>
+</tr>
+<tr class="odd">
+<td>Electrical and Electronic Products</td>
+<td>318.9721</td>
+</tr>
+</tbody>
+</table>
+<p><img src="Q8.png" class="img-fluid"></p>
+<p><strong>9.List down the top 3 districts that have attracted the most significant sector investments during FY 2019 to 2022? What factors could have led to the substantial investments in these particular districts?</strong></p>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fy19_22=m[(m["year"]!=2023)]</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#a=fy19_22.groupby(["district"])["investment in cr"].sum().reset_index()</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#b=a.sort_values("investment in cr",ascending=False).head(3)</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>district</th>
+<th>investment in cr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rangareddy</td>
+<td>40984.2759</td>
+</tr>
+<tr class="even">
+<td>Medchal_Malkajgiri</td>
+<td>9987.2529</td>
+</tr>
+<tr class="odd">
+<td>Sangareddy</td>
+<td>8955.4081</td>
+</tr>
+</tbody>
+</table>
+<p><img src="Q9.png" class="img-fluid"></p>
+<p><strong>10.Is there any relationship between district investments, vehicles sales and stamps revenue within the same district between FY 2021 and 2022?</strong></p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#m1=fact_stamps[["dist_code","estamps_challans_rev"]]</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#m2=fact_transport</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#m3=fact_TS_ipass[['dist_code','investment in cr']]</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#merged_df = pd.merge(m1,m2, on=['dist_code'], how='inner')</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co">#merged_df = pd.merge(merged_df,m3, on=['dist_code'], how='inner')</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co">#merged_df["year"]=DatetimeIndex(merged_df.month).year</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#merged_df.shape</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(12457632, 21)</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fy_2021_2022 = merged_df[(merged_df['year'] == 2021) | (merged_df['year'] == 2022)]</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlations, trends, or descriptive statistics</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#correlation_matrix = fy_2021_2022[['investment in cr', 'vehicleClass_MotorCar', 'estamps_challans_rev']].corr()</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print correlation matrix or perform other analysis</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">#print(correlation_matrix)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>investment in cr</th>
+<th>vehicleClass_MotorCar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>investment in cr</td>
+<td>1.000000</td>
+<td>0.070305</td>
+</tr>
+<tr class="even">
+<td>vehicleClass_MotorCar</td>
+<td>0.070305</td>
+<td>1.000000</td>
+</tr>
+<tr class="odd">
+<td>estamps_challans_rev</td>
+<td>0.058351</td>
+<td>0.648972</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>estamps_challans_rev</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>investment in cr</td>
+<td>0.058351</td>
+</tr>
+<tr class="even">
+<td>vehicleClass_MotorCar</td>
+<td>0.648972</td>
+</tr>
+<tr class="odd">
+<td>estamps_challans_rev</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(10, 8))</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f")</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.title("Correlation Matrix")</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="corr2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">correlation</figcaption>
+</figure>
+</div>
+<p><strong>11.Are there any particular sectors that have shown substantial investment in multiple districts between FY 2021 and 2022?</strong></p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fy21_22 = m[(m['year'] == 2021) | (m['year'] == 2022)]</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#fy21_22.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 25%">
+<col style="width: 12%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>dist_code</th>
+<th>month sector</th>
+<th>investment</th>
+<th>in cr</th>
+<th>number_of_employees</th>
+<th>district</th>
+<th>year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2381</td>
+<td>15_2</td>
+<td>01-01-2021</td>
+<td>Granite and Stone Crushing</td>
+<td>0.2500</td>
+<td>5</td>
+<td>Medchal_Malkajgiri</td>
+<td>2021</td>
+</tr>
+<tr class="even">
+<td>2382</td>
+<td>20_1</td>
+<td>01-01-2021</td>
+<td>Agro based incl Cold Storages</td>
+<td>0.8100</td>
+<td>28</td>
+<td>Karimnagar</td>
+<td>2021</td>
+</tr>
+<tr class="odd">
+<td>2383</td>
+<td>20_3</td>
+<td>01-01-2021</td>
+<td>Agro based incl Cold Storages</td>
+<td>1.7250</td>
+<td>63</td>
+<td>Rajanna Sircilla</td>
+<td>2021</td>
+</tr>
+<tr class="even">
+<td>2384</td>
+<td>19_1</td>
+<td>01-01-2021</td>
+<td>Cement, Cement &amp; Concrete Products, Fly Ash Br…</td>
+<td>0.0700</td>
+<td>5</td>
+<td>Adilabad</td>
+<td>2021</td>
+</tr>
+<tr class="odd">
+<td>2385</td>
+<td>20_2</td>
+<td>01-01-2021</td>
+<td>Agro based incl Cold Storages</td>
+<td>2.5765</td>
+<td>60</td>
+<td>Jagtial</td>
+<td>2021</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#grouped = fy21_22.groupby(['sector', 'district'])['investment in cr'].sum()</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#substantial_investments = grouped[grouped &gt; 100]</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset index to turn the groupby result into a DataFrame</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">#substantial_investments_df = substantial_investments.reset_index()</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co">#substantial_investments_df.head()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>sector</th>
+<th>district</th>
+<th>investment</th>
+<th>in cr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>Agro based incl Cold Storages</td>
+<td>Medchal_Malkajgiri</td>
+<td>358.2581</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Agro based incl Cold Storages</td>
+<td>Siddipet</td>
+<td>572.0519</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Automobile</td>
+<td>Rangareddy</td>
+<td>275.4781</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Beverages</td>
+<td>Narayanpet</td>
+<td>1455.0000</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Beverages</td>
+<td>Sangareddy</td>
+<td>326.4069</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img src="Q11.png" class="img-fluid"> <strong>12.Can we identify any seasonal patterns or cyclicality in the investment trends for specific sectors? Do certain sectors experience higher investments during particular months?</strong></p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#grouped = fact_TS_ipass.groupby(['sector', 'month'])['investment in cr'].mean()</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset index to turn the groupby result into a DataFrame</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#investment_by_sector_month = grouped.reset_index()</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pivot table for visualization</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co">#pivot_table = investment_by_sector_month.pivot_table(index='month', columns='sector', values='investment in cr', aggfunc='mean')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.figure(figsize=(50, 20))</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.heatmap(pivot_table, cmap='YlGnBu', annot=True, fmt=".2f")</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.title('Investment Trends by Sector and Month')</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.xlabel('Sector')</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.ylabel('Month')</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.xticks(rotation=45, ha='right')</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.tight_layout()</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="sector.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">sector Seasonal Patterns</figcaption>
+</figure>
+</div>
+<p>The increase in sectors that had increased in particular months are</p>
+<p>1.Fertilizers in 01-12-2019</p>
+<p>2.Automobile in 01-01-2023</p>
+<p>3.Real Estate in 01-01-2022</p>
+<p>Maximum the real estate is the happen to see a seasonal investment for every year with increase in investment every year</p>
+<p><strong>Secondary Research: (Need additional research and get additional data)</strong></p>
+<p><strong>1.What are the top 5 districts to buy commercial properties in Telangana? Justify your answer.</strong></p>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#a=["Real Estate, Industrial Parks and IT Buildings","Industrial Parks and IT Buildings","Agro based incl Cold Storages"]</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#commercial_data = m[m['sector'].isin(a)]</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by district and calculate the total investments</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#district_investments = commercial_data.groupby('district')['investment in cr'].sum()</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#district_investments</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>district</p>
+<p>Adilabad 2.2500</p>
+<p>Bhadradri Kothagudem 8.6496</p>
+<p>Hanumakonda 0.6700</p>
+<p>Hyderabad 0.1150</p>
+<p>Jagtial 34.1134</p>
+<p>Jangoan 17.2365</p>
+<p>Jayashankar Bhupalpally 1.0200</p>
+<p>Jogulamba Gadwal 3.7085</p>
+<p>Kamareddy 39.7736</p>
+<p>Karimnagar 29.2580</p>
+<p>Khammam 146.7360</p>
+<p>Kumurambheem Asifabad 0.0500</p>
+<p>Mahabubabad 21.7659</p>
+<p>Mahabubnagar 70.4528</p>
+<p>Mancherial 1.7825</p>
+<p>Medak 73.9177</p>
+<p>Medchal_Malkajgiri 450.3329</p>
+<p>Mulugu 0.8218</p>
+<p>Nagarkurnool 23.5549</p>
+<p>Nalgonda 25.0514</p>
+<p>Narayanpet 62.9028</p>
+<p>Nirmal 24.5042</p>
+<p>Nizamabad 45.1248</p>
+<p>Peddapalli 10.2509</p>
+<p>Rajanna Sircilla 28.3388</p>
+<p>Rangareddy 357.3141</p>
+<p>Sangareddy 76.9769</p>
+<p>Siddipet 734.0076</p>
+<p>Suryapet 4.6157</p>
+<p>Vikarabad 12.9320</p>
+<p>Wanaparthy 8.7885</p>
+<p>Warangal 34.7529</p>
+<p>Yadadri Bhuvanagiri 29.1078</p>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#top_districts = district_investments.sort_values(ascending=False).head(5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>district</p>
+<p>Siddipet 734.0076</p>
+<p>Medchal_Malkajgiri 450.3329</p>
+<p>Rangareddy 357.3141</p>
+<p>Khammam 146.7360</p>
+<p>Sangareddy 76.9769</p>
+<p><strong>2.What significant policies or initiatives were put into effect to enhance economic growth, investments, and employment in Telangana by the current government? Can we quantify the impact of these policies using available data?</strong></p>
+<p><strong>Industrial Policy Framework: The Telangana government introduced an industrial policy that aims to promote industrialization and attract investments across various sectors. This policy includes incentives and concessions for industries setting up in the state.</strong></p>
+<p><strong>TS-iPASS (Industrial Project Approval and Self-Certification System): TS-iPASS is an initiative to provide speedy and transparent approvals for setting up industries in Telangana. It simplifies the approval process and aims to create a business-friendly environment.</strong></p>
+<p><strong>T-Hub: T-Hub is a start up incubator and accelerator that fosters innovation and entrepreneurship. It provides a platform for start ups to collaborate, learn, and scale their businesses.</strong></p>
+<p><strong>Mission Bhagiratha: This project focuses on providing safe drinking water to every household in Telangana. Access to clean water infrastructure can improve health and living conditions, indirectly supporting economic growth.</strong></p>
+<p><strong>Rythu Bandhu Scheme: This scheme provides financial assistance to farmers in the form of investment support before the crop season. It aims to ensure farmers’ economic stability and enhance agricultural productivity.</strong></p>
+<p><strong>Telangana State Innovation Cell (TSIC): TSIC promotes innovation and research in various sectors. It supports start ups, provides training, and encourages the development of innovative solutions.</strong></p>
+<p><strong>These policies helped the investments raising and clearance of industry establishment in the state.</strong></p>
+<p><strong>As the data of the TS-iPASS shows the steady growth of investments increased especially in the real estate , Pharmaceuticals, solar and renewable energy,etc.</strong></p>
+<p><strong>3.Provide top 5 Insights &amp; 5 recommendations to Telangana government for sustained growth in the next 5 years based on your analysis.</strong></p>
+<p>5 Insights</p>
+<p>1.The investments in the state in constantly increasing</p>
+<p>2.Utilization of technology is increasing in every sector</p>
+<p>3.The people buying power is constantly increasing</p>
+<p>4.Companies are more interested in establishing their companies</p>
+<p>5.Investment in R&amp;D is not increasing variably and needs improvement.</p>
+<p>Recommendation 1: Support Local Businesses</p>
+<p>Promote local entrepreneurship and small businesses by providing incentives, access to capital, and mentor ship programs. Encourage the growth of local industries to ensure that the benefits of increased buying power stay within the state.</p>
+<p>Recommendation 2: Ease of Doing Business</p>
+<p>Continue to improve the ease of doing business in the state by reducing bureaucratic red tape, simplifying regulations, and streamlining permit processes. Creating a business-friendly environment will attract more companies and foster economic growth.</p>
+<p>Recommendation 3: Research and Innovation Hubs</p>
+<p>Establish research and innovation hubs in collaboration with academic institutions and industry partners. Provide grants, tax incentives, and resources to encourage research and development across various sectors. Invest in innovation to drive long-term economic growth.</p>
+<p>Recommendation 4: Sustainable Agriculture Practices</p>
+<p>Promote and subsidize the adoption of sustainable and organic farming practices. Encourage farmers to use organic fertilizers, reduce chemical pesticide use, and implement water-saving techniques. This will enhance food production while safeguarding the environment.</p>
+<p>Recommendation 5: Infrastructure Development</p>
+<p>Invest in infrastructure development, including transportation, energy, and logistics. Improved infrastructure can reduce costs for businesses, enhance connectivity, and facilitate the movement of goods and services, ultimately boosting economic growth.</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><a href="mailto:mtnvdsk@gmail.com">Contact mtnvdsk</a></div>
+    <div class="nav-footer-right"><a href="https://github.com/mtnvdsk">Github Code Repo</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

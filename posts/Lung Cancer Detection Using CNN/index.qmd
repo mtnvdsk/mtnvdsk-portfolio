@@ -1,7 +1,7 @@
 ---
 title: "Lung Cancer Detection using CNN"
 author: "mtnvdsk"
-date: "2023-08-25"
+date: "2022-05-13"
 image: "image.jpg"
 image-height: 10em
 image-width: 10em
