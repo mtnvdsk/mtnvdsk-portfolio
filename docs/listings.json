@@ -1,0 +1,17 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blogs/What is Web Pentesting and Steps Involved in it/index.html",
+      "/blogs/How to make a ARP Spoofing attack using Scapy  in python/index.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/posts/Data Analaysis of Telanagan Government/index.html",
+      "/posts/Cryptocurrency Price Analytics using AI/index.html",
+      "/posts/Lung Cancer Detection Using CNN/index.html"
+    ]
+  }
+]
