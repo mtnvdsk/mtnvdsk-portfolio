@@ -1,0 +1,24 @@
+---
+title: "Tarun Naga Venkata Durga Saikumar M"
+image: profile.jpg
+about:
+  template: jolla
+  image-width: 25em
+  image-shape: round
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/mtnvdsk
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/mtnvdsk
+    - icon: github
+      text: Github
+      href: https://github.com/mtnvdsk
+---
+
+Cybersecurity & AI,ML Enthusiastic
+
+In the realm of projects, Tarun's portfolio boasts a Lung Cancer Detection project utilizing Convolutional Neural Networks (CNN) and data augmentation techniques to enhance dataset quality and model robustness. Additionally, the Cryptocurrency Price Analytics project showcases proficiency in AI, Python, and Django, with the creation of an artificial neural network and Long Short-Term Memory (LSTM) model for accurate price predictions.
+
+With a strong academic foundation and a passion for data science, I exhibits a proven track record of excellence, making him an invaluable asset to any data science endeavor

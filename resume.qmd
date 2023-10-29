@@ -1,0 +1,81 @@
+---
+---
+
+## Professional Summary
+
+Seeking a full-time position that offers professional challenges, utilizing interpersonal skills, excellent time management, and problem-solving abilities.
+
+## Contact Information
+
+- **Phone:** +919398344527
+- **Email:** [mtnvdsk@gmail.com](mailto:mtnvdsk@gmail.com)
+- **Address:** Alkapuri Township,Hyderabad
+- **GitHub:** [github.com/mtnvdsk](https://github.com/mtnvdsk)
+- **LinkedIn:** [linkedin.com/in/mtnvdsk](https://linkedin.com/in/xxxxxx)
+
+## Skills
+
+### Programming Languages
+
+C, C++, Python, Core Java,HTML, Git, SQL, JavaScript,Regex, MongoDB, Web Security, Network Security, Shell Scripting, YAML, LVM, NFS,Linux.
+
+## Education
+
+- **Andhra Loyola Institute of Engineering and Technology**
+  - CGPA: 7.73
+  - Bachelor’s of Technology (2019 - 2023)
+  - Computer Science and Engineering
+
+## Projects
+
+### [Lung Cancer Detection using CNN - Python](projects.qmd)
+
+- Developed a model using Convolution Neural Network (CNN) for lung cancer detection.
+- Implemented data augmentation techniques, such as rotation, flipping, and scaling, to increase the dataset's size and model robustness.
+- Built and trained a CNN model with multiple convolutional and pooling layers to identify patterns in CT scan images and classify them as cancerous or non-cancerous.
+
+### [Cryptocurrency Price Analytics using Artificial Intelligence - Python, Django](projects.qmd)
+
+- Designed and implemented an artificial neural network (ANN) model using TensorFlow to predict future cryptocurrency prices based on historical data.
+- Built a long short-term memory (LSTM) model to improve prediction accuracy by considering the temporal nature of cryptocurrency prices.
+- Created an offline Django website to provide users with a user-friendly interface to access and visualize the predictions made by the ANN and LSTM models.
+
+## Internships
+
+### Indian Servers Pvt Ltd (March 2022 - May 2022)
+
+- Completed an internship in machine learning, focusing on lung cancer detection.
+- Gained expertise in data preprocessing, cleaning, and visualization techniques using Python and popular data science libraries.
+- Learned various machine learning techniques and gained practical experience in implementing these techniques in real-world scenarios.
+
+### Andhra Pradesh Technology Services (Apr 2023 - Oct 2023)
+
+- Assisted the cybersecurity team in conducting VAPT for various systems and applications.
+- Performed vulnerability assessments using automated tools and manual techniques to identify security weaknesses.
+- Conducted penetration testing to exploit identified vulnerabilities and evaluate the effectiveness of existing security controls.
+- Documented findings, prepared detailed reports, and provided recommendations for remediation. Collaborated with team members to develop and implement security best practices and policies.
+
+## Languages
+
+- **Telugu:** 4.0/5.0
+- **Hindi:** 3.5/5.0
+- **English:** 4.0/5.0
+
+## Interests
+
+- Trading
+- Coding
+- Reading Books
+
+## Certifications
+
+- Ethical Hacking - NPTEL
+- Google IT Support - Coursera
+- Azure Fundamentals (AZ-900) - Microsoft
+- Machine Learning - Coursera
+
+## Achievements
+
+- Published a research paper on the topic: "A NOVEL APPLICATION OF ARTIFICIAL INTELLIGENCE USING ANALYTICS FOR PRICING THE CRYPTOCURRENCY"
+- Participated in Nahemcon CTF and ranked 721 out of 2,665 teams
+

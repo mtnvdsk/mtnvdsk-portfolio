@@ -1,0 +1,12 @@
+---
+title: "Lung Cancer Detection using CNN"
+author: "mtnvdsk"
+date: "2022-05-13"
+image: "image.jpg"
+image-height: 10em
+image-width: 10em
+---
+
+Developed a model using Convolution Neural Network(CNN) for lung cancer detection. Implemented data augmentation techniques, such as rotation, flipping, and scaling, to increase the size of the dataset and improve the model's robustness. Built and trained a CNN model with multiple convolutional and pooling layers to identify patterns in CT scan images and classify them as either cancerous or non-cancerous.
+
+[Github Link](https://github.com/mtnvdsk/cancerdetect)
