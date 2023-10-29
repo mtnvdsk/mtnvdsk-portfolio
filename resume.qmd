@@ -17,7 +17,7 @@ Seeking a full-time position that offers professional challenges, utilizing inte
 
 ### Programming Languages
 
-C, C++, Python, Core Java,HTML, Git, SQL, JavaScript,Regex, MongoDB, Web Security, Network Security, Shell Scripting, YAML, LVM, NFS,Linux.
+C, C++, Python, Core Java,HTML, Git,Github, SQL, JavaScript,Regex, MongoDB, Web Security, Network Security, Shell Scripting, YAML, LVM, NFS,Linux.
 
 ## Education
 
